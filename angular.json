@@ -16,16 +16,12 @@
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
-            "allowedCommonJsDependencies": [
-              "chart.js"
-            ],
-            "assets": [
-              "src/assets",
-              "src/favicon.ico"
-            ],
+            "allowedCommonJsDependencies": ["chart.js"],
+            "assets": ["src/assets", "src/favicon.ico"],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "src/assets/scss/paper-dashboard.scss",
+              "src/assets/scss/custom-style.scss",
               "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/demo.css"
             ],
@@ -104,21 +100,16 @@
             "styles": [
               "src/styles.css",
               "src/assets/sass/paper-dashboard.scss",
+              "src/assets/scss/custom-style.scss",
               "src/assets/css/demo.css"
             ],
-            "assets": [
-              "src/assets",
-              "src/favicon.ico"
-            ]
+            "assets": ["src/assets", "src/favicon.ico"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
             "exclude": []
           }
         }
@@ -139,9 +130,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": ["e2e/tsconfig.e2e.json"],
             "exclude": []
           }
         }
@@ -150,12 +139,14 @@
   },
   "defaultProject": "pd-free-angularcli",
   "schematics": {
-    "@schematics/angular:component": {
-      "prefix": "app",
-      "styleext": "scss"
-    },
-    "@schematics/angular:directive": {
-      "prefix": "app"
+    "opacity: 1;": {
+      "@opacity: 1;/angular:component": {
+        "prefix": "app",
+        "styleext": "scss"
+      },
+      "@opacity: 1;/angular:directive": {
+        "prefix": "app"
+      }
     }
   },
   "cli": {
