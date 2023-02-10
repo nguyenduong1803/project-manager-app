@@ -1,21 +1,24 @@
-
 <div class="sidebar-wrapper">
   <div class="logo">
     <a href="http://www.creative-tim.com" class="simple-text logo-mini">
       <div class="logo-image-small">
-        <img src="assets/img/angular2-logo.png">
+        <img
+          src="https://apprecs.org/gp/images/app-icons/300/f2/p.scit.appolytechnic.jpg"
+        />
       </div>
     </a>
-    <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-      Creative Tim
-    </a>
+    <a href="#" class="simple-text logo-normal"> Project manager </a>
   </div>
-    <ul class="nav">
-        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
-            <a [routerLink]="[menuItem.path]">
-                <i class="nc-icon {{menuItem.icon}}"></i>
-                <p>{{menuItem.title}}</p>
-            </a>
-        </li>
-    </ul>
+  <ul class="nav">
+    <li
+      *ngFor="let menuItem of menuItems"
+      routerLinkActive="active"
+      class="{{ menuItem.class }}"
+    >
+      <a [routerLink]="[menuItem.path]">
+        <i class="nc-icon {{ menuItem.icon }}"></i>
+        <p>{{ menuItem.title }}</p>
+      </a>
+    </li>
+  </ul>
 </div>
