@@ -1,15 +1,76 @@
+import { baseURL } from "./../../environments/environment";
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Router } from "@angular/router";
+import Swal from "sweetalert2";
+import { TypeUser } from "app/types/user.type";
 
+const AUTH_ENPOINT = {
+  LOGIN: "auths/login",
+  VERIFY_TOKEN: "auths/verifyToken",
+};
+type formData = {
+  email: string;
+  password: string;
+};
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  private api = "http://localhost:4000/api/";
-  constructor(private http: HttpClient) {}
-  login(email: string, password: string): Observable<any> {
-    return this.http.get(`${this.api}login`);
+  public user: TypeUser;
+  constructor(private http: HttpClient, private router: Router) {}
+  login(body: formData): Observable<any> {
+    return this.http.post(baseURL + AUTH_ENPOINT.LOGIN, body);
   }
-  public isAuthenticated = true;
+  verify_token(): Observable<any> {
+    const token = localStorage.getItem("access_token");
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: token,
+    });
+    return this.http.post(
+      baseURL + AUTH_ENPOINT.VERIFY_TOKEN,
+      {
+        type: "registed",
+      },
+      { headers }
+    );
+  }
+  handleVerifyToken() {
+    this.verify_token().subscribe(async (data) => {
+      this.user = data.user;
+      this.isAuthenticated = true;
+      console.log("data", data);
+
+      this.router.navigate(["dashboard"]);
+    });
+  }
+  handleLogin(body: formData) {
+    this.login(body).subscribe(
+      async (data) => {
+        await Swal.fire({
+          icon: "success",
+          title: "Login thành công",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        console.log(data);
+        this.isAuthenticated = true;
+        this.user = data.user;
+        localStorage.setItem("access_token", data.token);
+        this.router.navigate(["dashboard"]);
+      },
+      async () => {
+        await Swal.fire({
+          icon: "error",
+          title: "Login thất bại",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      }
+    );
+  }
+
+  public isAuthenticated = false;
 }

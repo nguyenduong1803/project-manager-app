@@ -14,9 +14,15 @@
             />
             <h5 class="title">FPT Polytechnic</h5>
           </a>
-          <p class="description">Tóm tắt về team</p>
         </div>
-        <p class="description text-center">Số lượng thành viên : 6</p>
+        <p class="description text-center">
+          Thành viên : {{ project.teamSize }}
+        </p>
+        <p class="description text-center">
+          Ngày bắt đầu: {{ project.dateOfStart }}
+        </p>
+        <p class="description text-center">Mô tả: {{ project.description }}</p>
+        <p class="description text-center">Project budget</p>
       </div>
       <div class="card-footer">
         <hr />
@@ -34,13 +40,6 @@
                 16
                 <br />
                 <small>Task</small>
-              </h5>
-            </div>
-            <div class="col-lg-3 mr-auto">
-              <h5>
-                680,6$
-                <br />
-                <small>Total cost</small>
               </h5>
             </div>
           </div>
@@ -141,7 +140,7 @@
   <div class="col-md-8">
     <div class="card card-user">
       <div class="card-header">
-        <h4 class="card-title">Thông tin dự án 1</h4>
+        <h4 class="card-title">Thông tin: {{ project.name }}</h4>
         <p class="card-category">Here is a subtitle for this table</p>
       </div>
       <div class="card-body">

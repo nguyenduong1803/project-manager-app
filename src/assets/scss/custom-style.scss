@@ -212,3 +212,33 @@ $displacement: 3px;
   margin: 0;
   color: rgb(255, 68, 10);
 }
+
+.modalCreate {
+  position: fixed;
+  background-color: rgba(173, 173, 173, 0.3);
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.task_wrapper {
+  border-radius: 5px;
+  .title-task {
+    text-align: center;
+  }
+  .task-name {
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+  }
+}
+.project_close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}

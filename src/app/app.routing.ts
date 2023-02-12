@@ -7,12 +7,11 @@ export const AppRoutes: Routes = [
   {
     path: "login",
     component: LoginComponent,
-    pathMatch: "full",
   },
   {
     path: "",
     component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: "",
@@ -25,6 +24,6 @@ export const AppRoutes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "/login",
+    redirectTo: "/404",
   },
 ];

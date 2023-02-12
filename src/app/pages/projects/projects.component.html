@@ -1,0 +1,124 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">Project List</h4>
+  </div>
+  <div class="card-body">
+    <button type="submit" (click)="modalShow = true" class="btn btn-primary">
+      Add Project
+    </button>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="text-primary">
+          <th>Project ID</th>
+          <th>Project Name</th>
+          <th>Date of Start</th>
+          <th>Team Size</th>
+          <th class="text-center">Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projectList">
+            <td>{{ project._id }}</td>
+            <td>{{ project.name }}</td>
+            <td>{{ project.dateOfStart }}</td>
+            <td>{{ project.teamSize }}</td>
+            <td class="text-right">
+              <button class="btn btn-success" (click)="handleEdit(project._id)">
+                Edit
+              </button>
+              <a
+                routerLink="/groupInfomation/{{ project._id }}"
+                class="ml-2 btn btn-info"
+                >View</a
+              >
+              <a
+                routerLink="/task/{{ project._id }}"
+                class="ml-2 btn btn-primary"
+                >Task</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div *ngIf="modalShow" class="modalCreate" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content card card-user">
+      <button
+        type="button"
+        class="project_close close"
+        data-dismiss="modal"
+        aria-label="Close"
+        (click)="modalShow = false"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="card-header">
+        <h5 class="card-title">Add Project</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-12 pr-1">
+              <div class="form-group">
+                <label>Project Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Company"
+                  value="Creative Code Inc."
+                  formControlName="name"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 pr-1">
+              <div class="form-group">
+                <label>Project Description</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Company"
+                  formControlName="description"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 pr-1">
+              <div class="form-group">
+                <label>Date of start</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="dateOfStart"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 pr-1">
+              <div class="form-group">
+                <label>Team Size</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="teamSize"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button type="submit" class="btn btn-primary btn-round">
+                Update Profile
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

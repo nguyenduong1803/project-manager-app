@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/task/add/{{ projectId }}" class="btn btn-primary"
+      >Tạo Task</a
+    >
+  </div>
+  <div class="col-md-6">
+    <span>Tổng số task: {{ taskList.length }}</span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <div class="card p-3">
+      <h5 class="name border-bottom">Inprogess</h5>
+      <div
+        *ngFor="let task of handleGetTask(1)"
+        class="border task_wrapper p-2 mb-3 bg-primary"
+      >
+        <h5 class="task-name">{{ task.name }}</h5>
+        <p class="text-white">
+          {{ task.description }}
+        </p>
+        <span>Assign: {{ task.assign }}</span>
+        <select
+          (change)="handleChangStatus($event, task._id)"
+          class="form-control"
+          id=""
+          [value]="task.status"
+        >
+          <option value="1">Inprogess</option>
+          <option value="2">Reopen</option>
+          <option value="3">Dev Done</option>
+          <option value="4">Test</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="p-3 card">
+      <h5 class="name border-bottom">Reopen</h5>
+      <div
+        *ngFor="let task of handleGetTask(2)"
+        class="border task_wrapper p-2 mb-3 bg-primary"
+      >
+        <h4 class="task-name">{{ task.name }}</h4>
+        <p class="text-white">
+          {{ task.description }}
+        </p>
+        <select
+          (change)="handleChangStatus($event, task._id)"
+          class="form-control"
+          id=""
+          [value]="task.status"
+        >
+          <option value="1">Inprogess</option>
+          <option value="2">Reopen</option>
+          <option value="3">Dev Done</option>
+          <option value="4">Test</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="p-3 card">
+      <h5 class="name border-bottom">Dev Done</h5>
+      <div
+        *ngFor="let task of handleGetTask(3)"
+        class="border task_wrapper p-2 mb-3 bg-primary"
+      >
+        <h4 class="task-name">{{ task.name }}</h4>
+        <p class="text-white">
+          {{ task.description }}
+        </p>
+        <select
+          (change)="handleChangStatus($event, task._id)"
+          class="form-control"
+          id=""
+          [value]="task.status"
+        >
+          <option value="1">Inprogess</option>
+          <option value="2">Reopen</option>
+          <option value="3">Dev Done</option>
+          <option value="4">Test</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="p-3 card">
+      <h5 class="name border-bottom">Test</h5>
+      <div
+        *ngFor="let task of handleGetTask(4)"
+        class="border task_wrapper p-2 mb-3 bg-primary"
+      >
+        <h4 class="task-name">{{ task.name }}</h4>
+        <p>
+          {{ task.description }}
+        </p>
+        <select
+          (change)="handleChangStatus($event, task._id)"
+          class="form-control"
+          id=""
+          [value]="task.status"
+        >
+          <option value="1">Inprogess</option>
+          <option value="2">Reopen</option>
+          <option value="3">Dev Done</option>
+          <option value="4">Test</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

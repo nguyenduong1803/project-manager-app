@@ -60,16 +60,15 @@
             <rect class="st0" width="100" height="100" />
           </svg>
         </div>
-        <span
-          *ngIf="
-            !loginForm.value.email &&
-            loginForm.get('email').touched &&
-            loginForm.get('password').dirty
-          "
-          class="text_error"
-          >error</span
-        >
       </div>
+      <span
+        *ngIf="
+          loginForm.get('email') === null && ((loginForm.get('email').touched) ||
+          loginForm.get('email').dirty)
+        "
+        class="text_error"
+        >Vui lòng nhập email</span
+      >
       <div class="floating-label">
         <input
           class="login__input"
@@ -109,17 +108,17 @@
             />
           </svg>
         </div>
-        <p
-          *ngIf="
-            !loginForm.value.password &&
-            loginForm.get('password').touched &&
-            loginForm.get('password').dirty
-          "
-          class="text_error"
-        >
-          error
-        </p>
       </div>
+      <span
+        *ngIf="
+          loginForm.get('password') === null &&
+         (loginForm.get('password').touched ||
+          loginForm.get('password').dirty)
+        "
+        class="text_error"
+      >
+        Vui lòng nhập mật khẩu
+      </span>
       <button type="submit" class="login__button">Log in</button>
     </form>
   </div>

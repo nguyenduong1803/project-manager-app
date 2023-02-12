@@ -1,4 +1,7 @@
+import { TypeUser } from "./../types/user.type";
 import { Component, OnInit } from "@angular/core";
+import { AuthService } from "app/services/auth.service";
+import { ADMIN_ROUTER } from "app/constants/adminRouter";
 
 export interface RouteInfo {
   path: string;
@@ -8,17 +11,30 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-  { path: "/dashboard", title: "Dashboard", icon: "nc-bank", class: "" },
   {
-    path: "/groupInfomation",
+    path: ADMIN_ROUTER.DASHBOARD,
+    title: "Dashboard",
+    icon: "nc-bank",
+    class: "",
+  },
+  {
+    path: ADMIN_ROUTER.GROUP_INFOMATION,
     title: "Group Information",
     icon: "nc-single-02",
     class: "",
   },
-  { path: "/maps", title: "Task", icon: "nc-calendar-60", class: "" },
-  // { path: '/notifications', title: 'Notifications',     icon:'nc-bell-55',    class: '' },
-  { path: "/table", title: "Table List", icon: "nc-tile-56", class: "" },
-  // { path: '/typography',    title: 'Typography',        icon:'nc-caps-small', class: '' },
+  {
+    path: ADMIN_ROUTER.PROJECTS,
+    title: "Projects",
+    icon: "nc-calendar-60",
+    class: "",
+  },
+  {
+    path: ADMIN_ROUTER.TABLE,
+    title: "Table List",
+    icon: "nc-tile-56",
+    class: "",
+  },
 ];
 
 @Component({
@@ -28,7 +44,12 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   public menuItems: any[];
+  user: TypeUser;
+  constructor(private auth: AuthService) {
+    this.user = this.auth.user;
+  }
   ngOnInit() {
+    console.log(this.auth);
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
   }
 }
