@@ -16,6 +16,13 @@
         *ngFor="let task of handleGetTask(1)"
         class="border task_wrapper p-2 mb-3 bg-primary"
       >
+        <span
+          *if="user.isAdmin"
+          (click)="handleDelete(task._id)"
+          aria-hidden="true"
+          class="close_icon"
+          >&times;</span
+        >
         <h5 class="task-name">{{ task.name }}</h5>
         <p class="text-white">
           {{ task.description }}
@@ -42,10 +49,18 @@
         *ngFor="let task of handleGetTask(2)"
         class="border task_wrapper p-2 mb-3 bg-primary"
       >
+        <span
+          *if="user.isAdmin"
+          (click)="handleDelete(task._id)"
+          aria-hidden="true"
+          class="close_icon"
+          >&times;</span
+        >
         <h4 class="task-name">{{ task.name }}</h4>
         <p class="text-white">
           {{ task.description }}
         </p>
+        <span>Assign: {{ task.assign }}</span>
         <select
           (change)="handleChangStatus($event, task._id)"
           class="form-control"
@@ -67,10 +82,18 @@
         *ngFor="let task of handleGetTask(3)"
         class="border task_wrapper p-2 mb-3 bg-primary"
       >
+        <span
+          *if="user.isAdmin"
+          (click)="handleDelete(task._id)"
+          aria-hidden="true"
+          class="close_icon"
+          >&times;</span
+        >
         <h4 class="task-name">{{ task.name }}</h4>
         <p class="text-white">
           {{ task.description }}
         </p>
+        <span>Assign: {{ task.assign }}</span>
         <select
           (change)="handleChangStatus($event, task._id)"
           class="form-control"

@@ -1,9 +1,11 @@
+import { AuthService } from "app/services/auth.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { TaskService } from "app/services/task.service";
 import { TcommonResponse } from "app/types/commonRespone";
 import { TTask } from "app/types/task.type";
 import Swal from "sweetalert2";
+import { TypeUser } from "app/types/user.type";
 
 @Component({
   selector: "task",
@@ -12,10 +14,14 @@ import Swal from "sweetalert2";
 export class TaskComponent implements OnInit {
   taskList: TTask[] = [];
   projectId: string = "";
+  user: TypeUser;
   constructor(
     private route: ActivatedRoute,
-    private taskService: TaskService
-  ) {}
+    private taskService: TaskService,
+    private auth: AuthService
+  ) {
+    this.user = this.auth.user;
+  }
 
   ngOnInit() {
     this.projectId = this.route.snapshot.paramMap.get("id");
@@ -30,6 +36,9 @@ export class TaskComponent implements OnInit {
   }
   handleGetTask(status) {
     return this.taskList.filter((task) => task.status === status);
+  }
+  handleDelete(id) {
+    console.log(id);
   }
   handleChangStatus(e, id) {
     const task = this.taskList.find((task) => task._id === id);

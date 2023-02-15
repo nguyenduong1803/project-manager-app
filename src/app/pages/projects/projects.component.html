@@ -3,7 +3,12 @@
     <h4 class="card-title">Project List</h4>
   </div>
   <div class="card-body">
-    <button type="submit" (click)="modalShow = true" class="btn btn-primary">
+    <button
+      *ngIf="user.isAdmin"
+      type="submit"
+      (click)="modalShow = true"
+      class="btn btn-primary"
+    >
       Add Project
     </button>
     <div class="table-responsive">
@@ -22,10 +27,15 @@
             <td>{{ project.dateOfStart }}</td>
             <td>{{ project.teamSize }}</td>
             <td class="text-right">
-              <button class="btn btn-success" (click)="handleEdit(project._id)">
+              <button
+                *ngIf="user.isAdmin"
+                class="btn btn-success"
+                (click)="handleEdit(project._id)"
+              >
                 Edit
               </button>
               <a
+                *ngIf="user.isAdmin"
                 routerLink="/groupInfomation/{{ project._id }}"
                 class="ml-2 btn btn-info"
                 >View</a

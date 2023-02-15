@@ -1,0 +1,43 @@
+<div class="card card-user">
+  <div class="image">
+    <img src="assets/img/damir-bosnjak.jpg" alt="..." />
+  </div>
+  <div class="card-body">
+    <div class="author">
+      <a href="#">
+        <img
+          class="avatar border-gray"
+          src="https://freesvg.org/img/abstract-user-flat-4.png"
+          alt="..."
+        />
+        <h3 class="title">{{ user.fullname }}</h3>
+      </a>
+    </div>
+    <h4 class="title text-center">Email : {{ user.email }}</h4>
+    <h4 class="title text-center">
+      Position: {{ user.isAdmin ? "Admin " : "Employee" }}
+    </h4>
+    <p class="description text-center">Project budget</p>
+  </div>
+  <div class="card-footer">
+    <hr />
+    <div class="button-container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-6 ml-auto">
+          <h5>
+            12
+            <br />
+            <small>Project</small>
+          </h5>
+        </div>
+        <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+          <h5>
+            16
+            <br />
+            <small>Task</small>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

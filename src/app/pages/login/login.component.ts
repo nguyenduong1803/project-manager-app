@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 @Component({
   selector: "login",
@@ -16,7 +17,11 @@ export class LoginComponent implements OnInit {
     email: new FormControl(""),
     password: new FormControl(""),
   });
-  constructor(private fb: FormBuilder, private auth: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       password: ["", Validators.required, Validators.minLength(4)],
       email: [
@@ -37,14 +42,11 @@ export class LoginComponent implements OnInit {
         password,
       });
     }
-    console.log(this.loginForm.get("email"));
-    console.log(this.loginForm.get("password"));
   }
   ngOnInit() {
     const token = localStorage.getItem("access_token");
     console.log(token);
-    if (!this.auth.isAuthenticated) {
-      console.log("run ver");
+    if (token) {
       this.auth.handleVerifyToken();
     }
   }

@@ -9,6 +9,7 @@ import { TypeUser } from "app/types/user.type";
 const AUTH_ENPOINT = {
   LOGIN: "auths/login",
   VERIFY_TOKEN: "auths/verifyToken",
+  GET_ALL: "auths",
 };
 type formData = {
   email: string;
@@ -23,11 +24,19 @@ export class AuthService {
   login(body: formData): Observable<any> {
     return this.http.post(baseURL + AUTH_ENPOINT.LOGIN, body);
   }
+  getAll(): Observable<any> {
+    return this.http.get(baseURL + AUTH_ENPOINT.GET_ALL);
+  }
+  logout() {
+    this.user = null;
+    this.router.navigate(["/login"]);
+    localStorage.removeItem("access_token");
+  }
   verify_token(): Observable<any> {
     const token = localStorage.getItem("access_token");
     let headers = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: token,
+      Authorization: "Bearer " + token,
     });
     return this.http.post(
       baseURL + AUTH_ENPOINT.VERIFY_TOKEN,
@@ -39,11 +48,9 @@ export class AuthService {
   }
   handleVerifyToken() {
     this.verify_token().subscribe(async (data) => {
-      this.user = data.user;
+      this.user = { ...data.data };
       this.isAuthenticated = true;
-      console.log("data", data);
-
-      this.router.navigate(["dashboard"]);
+      this.router.navigate(["/dashboard"]);
     });
   }
   handleLogin(body: formData) {
@@ -55,7 +62,6 @@ export class AuthService {
           showConfirmButton: false,
           timer: 1500,
         });
-        console.log(data);
         this.isAuthenticated = true;
         this.user = data.user;
         localStorage.setItem("access_token", data.token);

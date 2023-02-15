@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ADMIN_ROUTER } from "app/constants/adminRouter";
+import { AuthService } from "app/services/auth.service";
 import { ProjectForm, ProjectService } from "app/services/project.service";
 import { TcommonResponse } from "app/types/commonRespone";
 import { TProject } from "app/types/project.type";
+import { TypeUser } from "app/types/user.type";
 import Swal from "sweetalert2";
 
 @Component({
@@ -15,13 +17,19 @@ export class ProjectsComponent implements OnInit {
   projectList: TProject[];
   modalShow: boolean = false;
   idEdit: string;
+  user: TypeUser;
   form = new FormGroup({
     name: new FormControl(""),
     description: new FormControl(""),
     teamSize: new FormControl(0),
     dateOfStart: new FormControl(""),
   });
-  constructor(private projectService: ProjectService) {}
+  constructor(
+    private projectService: ProjectService,
+    private auth: AuthService
+  ) {
+    this.user = this.auth.user;
+  }
 
   ngOnInit(): void {
     this.projectService

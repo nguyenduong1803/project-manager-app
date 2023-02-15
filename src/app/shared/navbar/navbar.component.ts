@@ -48,8 +48,7 @@ export class NavbarComponent implements OnInit {
     console.log(this.user);
   }
   handleLogout() {
-    localStorage.removeItem("access_token");
-    this.router.navigate(["/login"]);
+    this.auth.logout();
   }
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());

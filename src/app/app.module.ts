@@ -14,7 +14,9 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from "./pages/login/login.component";
 import { ProjectsComponent } from "./pages/projects/projects.component";
 import { AddTaskComponent } from "./pages/add-task/add-task.component";
-import { TaskComponent } from './pages/task/task.component';
+import { TaskComponent } from "./pages/task/task.component";
+import { PublicLayoutComponent } from "./layouts/public-layout/public-layout.component";
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { TaskComponent } from './pages/task/task.component';
     ProjectsComponent,
     AddTaskComponent,
     TaskComponent,
+    PublicLayoutComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserAnimationsModule,
