@@ -5,6 +5,7 @@ export const ADMIN_ROUTER = {
   TABLE: "table",
   TYPOGRAPHY: "typography",
   ADD_TASK: "task/add/:id",
+  EDIT_TASK: "task/edit/:id",
   TASK: "task/:id",
   PROJECTS: "projects",
 };

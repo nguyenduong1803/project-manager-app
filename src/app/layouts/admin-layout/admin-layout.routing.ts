@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { ADMIN_ROUTER } from "app/constants/adminRouter";
 import { AddTaskComponent } from "app/pages/add-task/add-task.component";
+import { EditTaskComponent } from "app/pages/edit-task/edit-task.component";
 import { ProfileComponent } from "app/pages/profile/profile.component";
 import { ProjectsComponent } from "app/pages/projects/projects.component";
 import { TaskComponent } from "app/pages/task/task.component";
@@ -20,6 +21,7 @@ export const AdminLayoutRoutes: Routes = [
   },
   // { path: ADMIN_ROUTER.TYPOGRAPHY, component: TypographyComponent },
   { path: ADMIN_ROUTER.ADD_TASK, component: AddTaskComponent },
+  { path: ADMIN_ROUTER.EDIT_TASK, component: EditTaskComponent },
   { path: ADMIN_ROUTER.PROJECTS, component: ProjectsComponent },
   { path: ADMIN_ROUTER.TASK, component: TaskComponent },
   {

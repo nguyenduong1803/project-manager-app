@@ -33,12 +33,31 @@ export class TaskComponent implements OnInit {
           this.taskList.push(task);
         });
       });
+    console.log("user: ", this.user);
   }
   handleGetTask(status) {
     return this.taskList.filter((task) => task.status === status);
   }
   handleDelete(id) {
-    console.log(id);
+    this.taskService.delete(id).subscribe(
+      async () => {
+        this.taskList = this.taskList.filter((task) => task._id !== id);
+        await Swal.fire({
+          icon: "success",
+          title: "Xóa thành công",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      },
+      async () => {
+        await Swal.fire({
+          icon: "error",
+          title: "Xóa thất bại",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    );
   }
   handleChangStatus(e, id) {
     const task = this.taskList.find((task) => task._id === id);

@@ -17,6 +17,7 @@ import { AddTaskComponent } from "./pages/add-task/add-task.component";
 import { TaskComponent } from "./pages/task/task.component";
 import { PublicLayoutComponent } from "./layouts/public-layout/public-layout.component";
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     TaskComponent,
     PublicLayoutComponent,
     ProfileComponent,
+    EditTaskComponent,
   ],
   imports: [
     BrowserAnimationsModule,

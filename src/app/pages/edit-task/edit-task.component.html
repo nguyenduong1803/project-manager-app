@@ -1,0 +1,62 @@
+<div class="card card-user">
+  <div class="card-header">
+    <h5 class="card-title">Add Task</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-12 pr-1">
+          <div class="form-group">
+            <label>Task name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Task Name"
+              name="name"
+              formControlName="name"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 pr-1">
+          <div class="form-group">
+            <label>Assign</label>
+            <select
+              class="form-control form-select-lg mb-3 w-100"
+              aria-label=".form-select-lg example"
+              formControlName="assign"
+              name="assign"
+            >
+              <option selected>No Assign</option>
+              <option value="Văn Tùng">Văn Tùng</option>
+              <option value="Hoàng Anh">Hoàng Anh</option>
+              <option value="Tiến">Tiến</option>
+              <option value="Manh An">Mạnh An</option>
+              <option value="Linh">Linh</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Description</label>
+            <textarea
+              class="form-control textarea"
+              formControlName="description"
+              name="description"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="update ml-auto mr-auto">
+          <button type="submit" class="btn btn-primary btn-round">
+            Update Task
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

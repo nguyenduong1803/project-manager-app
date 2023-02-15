@@ -242,9 +242,16 @@ $displacement: 3px;
   right: 12px;
   top: 12px;
 }
+.space-between {
+  justify-content: space-between;
+}
+.btn-mini {
+  padding: 4px;
+  background-color: #fff;
+  color: #3b3b3b;
+  font-weight: 500;
+}
 .close_icon {
   font-size: 2rem;
   cursor: pointer;
-  text-align: right;
-  display: block;
 }
