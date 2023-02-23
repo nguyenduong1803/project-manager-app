@@ -73,10 +73,10 @@ export class ProjectsComponent implements OnInit {
           });
           this.idEdit = "";
         },
-        async () => {
+        () => {
           this.idEdit = "";
           this.modalShow = false;
-          await Swal.fire({
+          Swal.fire({
             icon: "success",
             title: "Update thất bại",
             showConfirmButton: false,
@@ -85,10 +85,33 @@ export class ProjectsComponent implements OnInit {
         }
       );
   }
-  handleEdit(id) {
+  handleEdit(id: string) {
     const project = this.projectList.find((project) => project._id === id);
     this.form.reset(project);
     this.modalShow = true;
     this.idEdit = id;
+  }
+  handleDetele(id: string) {
+    this.projectService.removeProject(id).subscribe(
+      async () => {
+        this.projectList = this.projectList.filter(
+          (project) => project._id !== id
+        );
+        await Swal.fire({
+          icon: "success",
+          title: "Remove thành công",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      },
+      () => {
+        Swal.fire({
+          icon: "success",
+          title: "Update thất bại",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    );
   }
 }

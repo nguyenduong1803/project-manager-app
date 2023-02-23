@@ -7,6 +7,7 @@ const PROJECT_ENPOIT = {
   BY_ID: "projectById/",
   ADD_PROJECT: "project/add",
   UPDATE_PROJECT: "project/update/",
+  REMOVE_PROJECT: "/project/remove/",
 };
 export type ProjectForm = Pick<
   TProject,
@@ -27,7 +28,10 @@ export class ProjectService {
   addProject(body: ProjectForm) {
     return this.http.post(baseURL + PROJECT_ENPOIT.ADD_PROJECT, body);
   }
-  updateProject(body: ProjectForm,id:string) {
-    return this.http.put(baseURL + PROJECT_ENPOIT.UPDATE_PROJECT+id, body);
+  updateProject(body: ProjectForm, id: string) {
+    return this.http.put(baseURL + PROJECT_ENPOIT.UPDATE_PROJECT + id, body);
+  }
+  removeProject(id: string) {
+    return this.http.delete(baseURL + PROJECT_ENPOIT.REMOVE_PROJECT + id);
   }
 }

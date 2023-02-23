@@ -54,13 +54,17 @@
         *ngFor="let task of handleGetTask(2)"
         class="border task_wrapper p-2 mb-3 bg-primary"
       >
-        <span
-          *ngIf="user.isAdmin"
-          (click)="handleDelete(task._id)"
-          aria-hidden="true"
-          class="close_icon"
-          >&times;</span
-        >
+        <div class="d-flex space-between" *ngIf="user.isAdmin">
+          <a routerLink="/task/edit/{{ task._id }}" class="btn btn-mini"
+            >Edit</a
+          >
+          <span
+            (click)="handleDelete(task._id)"
+            aria-hidden="true"
+            class="close_icon"
+            >&times;</span
+          >
+        </div>
         <h4 class="task-name">{{ task.name }}</h4>
         <p class="text-white">
           {{ task.description }}
@@ -77,10 +81,6 @@
           <option value="3">Dev Done</option>
           <option value="4">Test</option>
         </select>
-        <div class="'d-flex">
-          <button class="btn btn-success">Edit</button>
-          <button class="btn btn-danger">remove</button>
-        </div>
       </div>
     </div>
   </div>
@@ -91,13 +91,17 @@
         *ngFor="let task of handleGetTask(3)"
         class="border task_wrapper p-2 mb-3 bg-primary"
       >
-        <span
-          *ngIf="user.isAdmin"
-          (click)="handleDelete(task._id)"
-          aria-hidden="true"
-          class="close_icon"
-          >&times;</span
-        >
+        <div class="d-flex space-between" *ngIf="user.isAdmin">
+          <a routerLink="/task/edit/{{ task._id }}" class="btn btn-mini"
+            >Edit</a
+          >
+          <span
+            (click)="handleDelete(task._id)"
+            aria-hidden="true"
+            class="close_icon"
+            >&times;</span
+          >
+        </div>
         <h4 class="task-name">{{ task.name }}</h4>
         <p class="text-white">
           {{ task.description }}
@@ -114,10 +118,6 @@
           <option value="3">Dev Done</option>
           <option value="4">Test</option>
         </select>
-        <div class="'d-flex">
-          <button class="btn btn-success">Edit</button>
-          <button class="btn btn-danger">remove</button>
-        </div>
       </div>
     </div>
   </div>
@@ -128,17 +128,22 @@
         *ngFor="let task of handleGetTask(4)"
         class="border task_wrapper p-2 mb-3 bg-primary"
       >
-        <span
-          *ngIf="user.isAdmin"
-          (click)="handleDelete(task._id)"
-          aria-hidden="true"
-          class="close_icon"
-          >&times;</span
-        >
+        <div class="d-flex space-between" *ngIf="user.isAdmin">
+          <a routerLink="/task/edit/{{ task._id }}" class="btn btn-mini"
+            >Edit</a
+          >
+          <span
+            (click)="handleDelete(task._id)"
+            aria-hidden="true"
+            class="close_icon"
+            >&times;</span
+          >
+        </div>
         <h4 class="task-name">{{ task.name }}</h4>
         <p>
           {{ task.description }}
         </p>
+        <span>Assign: {{ task.assign }}</span>
         <select
           (change)="handleChangStatus($event, task._id)"
           class="form-control"
@@ -150,10 +155,6 @@
           <option value="3">Dev Done</option>
           <option value="4">Test</option>
         </select>
-        <div class="'d-flex">
-          <button class="btn btn-success">Edit</button>
-          <button class="btn btn-danger">remove</button>
-        </div>
       </div>
     </div>
   </div>

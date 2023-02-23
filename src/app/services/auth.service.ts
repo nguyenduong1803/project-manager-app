@@ -20,6 +20,7 @@ type formData = {
 })
 export class AuthService {
   public user: TypeUser;
+  public isAuthenticated = false;
   constructor(private http: HttpClient, private router: Router) {}
   login(body: formData): Observable<any> {
     return this.http.post(baseURL + AUTH_ENPOINT.LOGIN, body);
@@ -77,6 +78,4 @@ export class AuthService {
       }
     );
   }
-
-  public isAuthenticated = false;
 }

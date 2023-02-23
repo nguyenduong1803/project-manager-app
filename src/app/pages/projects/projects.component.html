@@ -40,6 +40,12 @@
                 class="ml-2 btn btn-info"
                 >View</a
               >
+              <Button
+                (click)="handleDetele(project._id)"
+                *ngIf="user.isAdmin"
+                class="ml-2 btn btn-danger"
+                >Delete</Button
+              >
               <a
                 routerLink="/task/{{ project._id }}"
                 class="ml-2 btn btn-primary"
@@ -76,7 +82,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Company"
+                  placeholder="Project name"
                   value="Creative Code Inc."
                   formControlName="name"
                 />
@@ -90,7 +96,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Company"
+                  placeholder="Description"
                   formControlName="description"
                 />
               </div>
